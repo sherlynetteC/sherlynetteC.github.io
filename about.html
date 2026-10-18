@@ -4,51 +4,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>About | Sherlynette Pérez Castro</title>
   <link rel="stylesheet" href="style.css">
 
   <style>
     .page.journey-page {
       max-width: 1320px;
+      padding-top: 35px;
     }
 
     .journey-intro {
-      max-width: 1050px;
-      margin: 25px 0 38px !important;
-      font-size: clamp(17px, 2vw, 22px) !important;
-      line-height: 1.7 !important;
+      max-width: 1100px;
+      margin: 20px 0 28px !important;
       color: var(--text) !important;
+      font-size: clamp(16px, 1.7vw, 20px) !important;
+      line-height: 1.65 !important;
     }
 
     .journey-card {
-      background: #111820;
-      border: 1px solid #293630;
-      border-radius: 10px;
-      padding: 18px;
+      position: relative;
+      background: #10251e;
+      border: 1px solid #416e58;
+      border-radius: 12px;
+      padding: 12px;
+      overflow: hidden;
     }
 
     .journey-plot {
+      display: block;
       width: 100%;
       height: auto;
-      display: block;
     }
 
     .journey-plot .grid {
-      stroke: #293630;
-      stroke-dasharray: 4 8;
+      stroke: #345345;
+      stroke-width: 0.8;
+      stroke-dasharray: 4 9;
     }
 
     .journey-plot .tick {
-      fill: #9da9a4;
-      font: 13px ui-monospace, monospace;
+      fill: #adc4b8;
+      font: 12px ui-monospace, Menlo, Consolas, monospace;
+    }
+
+    .journey-plot .axis-title {
+      fill: #8fbfa3;
+      font: 12px ui-monospace, Menlo, Consolas, monospace;
     }
 
     .journey-plot .route {
-      stroke: #679a7c;
-      stroke-width: 2.5;
-      stroke-dasharray: 7 7;
       fill: none;
+      stroke: #8fbfa3;
+      stroke-width: 2.4;
+      stroke-dasharray: 7 7;
+      opacity: 0.85;
     }
 
     .journey-plot .point {
@@ -57,139 +66,93 @@
     }
 
     .journey-plot .halo {
-      fill: #111820;
-      stroke: #8fbfa3;
+      fill: #10251e;
+      stroke: #a2d4b6;
       stroke-width: 3;
     }
 
     .journey-plot .core {
-      fill: #8fbfa3;
+      fill: #a2d4b6;
     }
 
     .journey-plot .name {
-      fill: #e9edea;
-      font: 13px ui-monospace, monospace;
+      fill: #f0f6f1;
+      font: 12px ui-monospace, Menlo, Consolas, monospace;
       pointer-events: none;
     }
 
-    .journey-plot .point:hover .halo,
     .journey-plot .point.active .halo,
+    .journey-plot .point:hover .halo,
     .journey-plot .point:focus .halo {
-      fill: #244634;
+      fill: #37634d;
+      stroke: #c3e9d0;
       stroke-width: 4;
     }
 
-    .journey-plot .axis-title {
-      fill: #8fbfa3;
-      font: 12px ui-monospace, monospace;
+    .journey-plot .spoke {
+      stroke: #a2d4b6;
+      stroke-width: 1.4;
+      stroke-dasharray: 4 5;
+      opacity: 0.8;
     }
 
-    /* Publication panel overlays the plot cleanly */
-    .research-panel {
-      position: relative;
-      margin: 12px 0 0;
-      padding: 22px;
-      background: #1c342a;
-      border: 1px solid #8fbfa3;
-      border-radius: 9px;
-      box-shadow: 0 12px 35px rgba(0,0,0,.25);
+    /* Solid, contrasting publication boxes */
+    .journey-plot .citation-bg {
+      fill: #244b3a;
+      stroke: #82b99a;
+      stroke-width: 1.2;
     }
 
-    .research-panel[hidden] {
-      display: none;
-    }
-
-    .panel-heading {
-      color: #a9d5b9;
-      font: 13px ui-monospace, monospace;
-      letter-spacing: .07em;
-      margin: 0 38px 15px 0;
-    }
-
-    .panel-close {
-      position: absolute;
-      top: 13px;
-      right: 16px;
-      background: transparent;
-      border: 0;
-      color: #a9d5b9;
-      font-size: 24px;
+    .journey-plot .satellite {
       cursor: pointer;
+      outline: none;
     }
 
-    .publication-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+    .journey-plot .satellite:hover .citation-bg,
+    .journey-plot .satellite:focus .citation-bg {
+      fill: #35694f;
+      stroke: #c3e9d0;
+      stroke-width: 2;
     }
 
-    .publication-link {
-      display: block;
-      padding: 14px 17px;
-      background: #10231c;
-      border: 1px solid #466e58;
-      border-radius: 7px;
-      text-decoration: none;
-      transition: background .15s, border-color .15s;
+    .journey-plot .citation {
+      fill: #ffffff;
+      font: 12px ui-monospace, Menlo, Consolas, monospace;
+      pointer-events: none;
     }
 
-    .publication-link:hover,
-    .publication-link:focus {
-      background: #294b39;
-      border-color: #b6e1c5;
+    .journey-plot .journal {
+      fill: #c1e2cc;
+      font: 10.5px ui-monospace, Menlo, Consolas, monospace;
+      pointer-events: none;
     }
 
-    .publication-link strong {
-      display: block;
-      color: #f0f5f0;
-      font: 14px/1.5 ui-monospace, monospace;
-      margin-bottom: 5px;
+    .journey-plot .dot {
+      fill: #10251e;
+      stroke: #a2d4b6;
+      stroke-width: 2.5;
     }
 
-    .publication-link small {
-      display: block;
-      color: #a9d5b9;
-      font: 12px/1.5 ui-monospace, monospace;
+    .journey-card .empty-note {
+      position: absolute;
+      right: 20px;
+      top: 17px;
+      color: #a8c8b6;
+      font: 11px ui-monospace, monospace;
+      pointer-events: none;
     }
 
-    .publication-link .arrow {
-      float: right;
-      color: #a9d5b9;
-    }
-
-    .panel-image {
-      display: block;
-      max-width: min(100%, 440px);
-      max-height: 280px;
-      object-fit: contain;
-      margin: 10px auto;
-      border-radius: 5px;
-    }
-
-    .panel-caption {
-      color: #d9e7dc;
-      font-size: 14px;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .journey-hint {
-      color: #9da9a4;
-      font: 12px/1.6 ui-monospace, monospace;
-      margin: 12px 0 0;
-    }
-
-    @media (max-width: 700px) {
+    @media (max-width: 750px) {
       .journey-card {
         overflow-x: auto;
       }
 
       .journey-plot {
-        min-width: 850px;
+        min-width: 900px;
       }
 
-      .publication-grid {
-        grid-template-columns: 1fr;
+      .journey-intro {
+        font-size: 16px !important;
       }
     }
   </style>
@@ -226,23 +189,17 @@
 
   <div class="journey-card">
 
+    <span class="empty-note" id="empty-note">
+      SELECT AN INSTITUTION TO EXPLORE ↗
+    </span>
+
     <svg
       id="journey"
       class="journey-plot"
-      viewBox="0 0 1120 570"
+      viewBox="0 0 1120 600"
       role="group"
-      aria-label="Interactive research journey plotted by year and latitude"
+      aria-label="Interactive research trajectory showing institutions and publications"
     ></svg>
-
-    <div id="research-panel" class="research-panel" hidden>
-      <button id="panel-close" class="panel-close" aria-label="Close publications">×</button>
-      <div id="panel-heading" class="panel-heading"></div>
-      <div id="panel-content" class="publication-grid"></div>
-    </div>
-
-    <p class="journey-hint">
-      ◉ SELECT AN INSTITUTION TO EXPLORE ITS RESEARCH OUTPUTS
-    </p>
 
   </div>
 
@@ -261,9 +218,8 @@ const stops = [
     label: 'UPR · MS',
     outputs: [
       {
-        type: 'image',
-        label: 'Occurrence and Characterization of Mn Nodules in a Toposequence at Coloso Valley Agricultural Reserve',
-        sub: 'MS Soil Sciences · University of Puerto Rico',
+        label: 'Mn nodules · Coloso Valley',
+        journal: 'Occurrence and Characterization · MS research',
         image: 'mn-nodules-fig4.jpg'
       }
     ]
@@ -275,9 +231,8 @@ const stops = [
     label: 'USDA NRCS',
     outputs: [
       {
-        type: 'image',
         label: '2013 WCA sampling campaign',
-        sub: 'USDA Natural Resources Conservation Service',
+        journal: 'USDA NRCS · Field research',
         image: 'nrcs.png'
       }
     ]
@@ -356,7 +311,7 @@ const stops = [
       },
       {
         label: 'Tulip et al., 2026',
-        journal: 'EGUsphere · preprint',
+        journal: 'EGUsphere · Preprint',
         doi: '10.5194/egusphere-2026-2111'
       }
     ]
@@ -377,11 +332,8 @@ const stops = [
 ];
 
 const svg = document.getElementById('journey');
+const note = document.getElementById('empty-note');
 const ns = 'http://www.w3.org/2000/svg';
-
-const panel = document.getElementById('research-panel');
-const heading = document.getElementById('panel-heading');
-const content = document.getElementById('panel-content');
 
 function el(tag, attrs = {}, parent = svg) {
   const node = document.createElementNS(ns, tag);
@@ -390,32 +342,35 @@ function el(tag, attrs = {}, parent = svg) {
     node.setAttribute(key, value);
   }
 
-  parent.append(node);
+  parent.appendChild(node);
   return node;
 }
 
 const X = year => 95 + (year - 2010) / 16 * 930;
-const Y = lat => 465 - (lat - 15) / 30 * 390;
+const Y = lat => 460 - (lat - 15) / 30 * 380;
 
-// Latitude grid
+/* Latitude grid */
 for (let lat = 15; lat <= 45; lat += 5) {
   el('line', {
-    x1: 95, y1: Y(lat),
-    x2: 1055, y2: Y(lat),
+    x1: 95,
+    y1: Y(lat),
+    x2: 1055,
+    y2: Y(lat),
     class: 'grid'
   });
 
   el('text', {
-    x: 20, y: Y(lat) + 5,
+    x: 20,
+    y: Y(lat) + 4,
     class: 'tick'
   }).textContent = lat + '°N';
 }
 
-// Year labels
+/* Year labels */
 for (const year of [2010, 2014, 2018, 2022, 2026]) {
   el('text', {
     x: X(year),
-    y: 520,
+    y: 515,
     'text-anchor': 'middle',
     class: 'tick'
   }).textContent = year;
@@ -428,7 +383,7 @@ el('text', {
   class: 'axis-title'
 }).textContent = 'YEAR';
 
-// Research trajectory
+/* Research trajectory */
 el('path', {
   d: stops.map((s, i) =>
     (i ? 'L' : 'M') + X(s.year) + ',' + Y(s.lat)
@@ -436,101 +391,175 @@ el('path', {
   class: 'route'
 });
 
-function showResearch(stop) {
-  document.querySelectorAll('.journey-plot .point')
-    .forEach(p => p.classList.toggle('active', p.dataset.id === stop.id));
+/*
+  Separate layers:
+  - lines behind publication cards
+  - institution nodes above lines
+  - publication cards above everything
+*/
+const spokeLayer = el('g', { id: 'spoke-layer' });
+const pointLayer = el('g', { id: 'point-layer' });
+const cardLayer = el('g', { id: 'card-layer' });
 
-  heading.textContent = stop.label + '  /  RESEARCH OUTPUTS';
-  content.replaceChildren();
+function show(s) {
+  note.style.display = 'none';
 
-  for (const output of stop.outputs) {
-    if (output.type === 'image') {
-      const wrapper = document.createElement('a');
-      wrapper.className = 'publication-link';
-      wrapper.href = output.image;
-      wrapper.target = '_blank';
-      wrapper.rel = 'noopener';
-
-      const img = document.createElement('img');
-      img.className = 'panel-image';
-      img.src = output.image;
-      img.alt = output.label;
-
-      const caption = document.createElement('div');
-      caption.className = 'panel-caption';
-      caption.textContent = output.label + ' · ' + output.sub;
-
-      wrapper.append(img, caption);
-      content.append(wrapper);
-    } else {
-      const link = document.createElement('a');
-      link.className = 'publication-link';
-      link.href = 'https://doi.org/' + output.doi;
-      link.target = '_blank';
-      link.rel = 'noopener';
-
-      const title = document.createElement('strong');
-      title.textContent = output.label + ' ↗';
-
-      const journal = document.createElement('small');
-      journal.textContent = output.journal;
-
-      link.append(title, journal);
-      content.append(link);
-    }
-  }
-
-  panel.hidden = false;
-}
-
-// Institution markers
-for (const stop of stops) {
-  const g = el('g', {
-    class: 'point',
-    'data-id': stop.id,
-    role: 'button',
-    tabindex: '0',
-    'aria-label': stop.label + '; show research outputs'
+  document.querySelectorAll('.point').forEach(p => {
+    p.classList.toggle('active', p.dataset.id === s.id);
   });
 
+  spokeLayer.replaceChildren();
+  cardLayer.replaceChildren();
+
+  const x = X(s.year);
+  const y = Y(s.lat);
+  const items = s.outputs;
+
+  /*
+    Publication boxes stay inside the graph.
+
+    The left-side institutions display boxes toward the
+    center-right; UGA and UNC display boxes toward the left.
+
+    The boxes have a solid green background, so the
+    graph and connector lines cannot show through.
+  */
+
+  const cardW = 350;
+  const cardH = 56;
+  const step = 66;
+
+  let cardX;
+
+  if (s.id === 'uga' || s.id === 'unc') {
+    cardX = 540;
+  } else if (s.id === 'mbl') {
+    cardX = 580;
+  } else {
+    cardX = 570;
+  }
+
+  /*
+    Position the group vertically around the selected
+    institution, but keep it within the graph.
+  */
+  const totalH = (items.length - 1) * step + cardH;
+
+  const top = Math.max(
+    20,
+    Math.min(470 - totalH, y - totalH / 2)
+  );
+
+  items.forEach((o, i) => {
+    const bx = cardX;
+    const by = top + i * step;
+    const anchorY = by + cardH / 2;
+
+    /* Connector stays behind the card */
+    el('line', {
+      x1: x,
+      y1: y,
+      x2: bx,
+      y2: anchorY,
+      class: 'spoke'
+    }, spokeLayer);
+
+    const g = el('g', {
+      class: 'satellite',
+      role: 'link',
+      tabindex: '0',
+      'aria-label': o.label + ', ' + o.journal
+    }, cardLayer);
+
+    el('rect', {
+      x: bx,
+      y: by,
+      width: cardW,
+      height: cardH,
+      rx: 8,
+      class: 'citation-bg'
+    }, g);
+
+    el('circle', {
+      cx: bx + 13,
+      cy: anchorY,
+      r: 5,
+      class: 'dot'
+    }, g);
+
+    el('text', {
+      x: bx + 29,
+      y: by + 23,
+      class: 'citation'
+    }, g).textContent = o.label + ' ↗';
+
+    el('text', {
+      x: bx + 29,
+      y: by + 42,
+      class: 'journal'
+    }, g).textContent = o.journal;
+
+    const open = () => {
+      const url = o.doi
+        ? 'https://doi.org/' + o.doi
+        : o.image;
+
+      window.open(url, '_blank', 'noopener');
+    };
+
+    g.addEventListener('click', open);
+
+    g.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        open();
+      }
+    });
+  });
+}
+
+/* Institution nodes */
+for (const s of stops) {
+  const g = el('g', {
+    class: 'point',
+    'data-id': s.id,
+    role: 'button',
+    tabindex: '0',
+    'aria-label': s.label + ', show research outputs'
+  }, pointLayer);
+
   el('circle', {
-    cx: X(stop.year),
-    cy: Y(stop.lat),
+    cx: X(s.year),
+    cy: Y(s.lat),
     r: 13,
     class: 'halo'
   }, g);
 
   el('circle', {
-    cx: X(stop.year),
-    cy: Y(stop.lat),
+    cx: X(s.year),
+    cy: Y(s.lat),
     r: 4,
     class: 'core'
   }, g);
 
   el('text', {
-    x: X(stop.year),
-    y: Y(stop.lat) - 23,
+    x: X(s.year),
+    y: Y(s.lat) - 23,
     'text-anchor': 'middle',
     class: 'name'
-  }, g).textContent = stop.label;
+  }, g).textContent = s.label;
 
-  g.addEventListener('click', () => showResearch(stop));
-  g.addEventListener('mouseenter', () => showResearch(stop));
-  g.addEventListener('focus', () => showResearch(stop));
+  g.addEventListener('mouseenter', () => show(s));
+  g.addEventListener('focus', () => show(s));
+  g.addEventListener('click', () => show(s));
 
-  g.addEventListener('keydown', event => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      showResearch(stop);
+  g.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      show(s);
     }
   });
 }
-
-document.getElementById('panel-close').addEventListener('click', () => {
-  panel.hidden = true;
-  document.querySelectorAll('.journey-plot .point')
-    .forEach(p => p.classList.remove('active'));
-});
 </script>
 
 </body>
