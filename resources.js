@@ -68,7 +68,7 @@ const resources = [
   },
   {
     name: 'Kraken2 Indexes',
-    category: 'bioinformatics',
+    category: 'databases',
     description: 'Prebuilt databases for taxonomic classification',
     url: 'https://benlangmead.github.io/aws-indexes/k2',
     symbol: 'K2'
