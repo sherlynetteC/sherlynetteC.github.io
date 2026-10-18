@@ -16,7 +16,7 @@ const publications = [
     doi: '10.1029/2026JG009818',
     image: 'jgrg70337-fig-0003-m.jpg',
     figure: 'Fig. 3',
-    caption: 'Conceptual representation of soil organic carbon pools and the fluxes connecting them.'
+    caption: 'Conceptual structure of the soil carbon model, representing four interconnected organic carbon pools, their fluxes, and microbial regulation of decomposition.'
   },
   {
     year: 2023,
