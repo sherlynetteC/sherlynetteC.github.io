@@ -1,91 +1,32 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About | Sherlynette Pérez Castro</title>
-<link rel="stylesheet" href="style.css">
-<style>
-/* About-page research trajectory */
-.page.trajectory-page{max-width:1120px}
-.trajectory-intro{font-size:clamp(18px,2vw,23px);line-height:1.65;color:var(--text);max-width:930px;margin:25px 0 48px}
-.trajectory-heading{display:flex;justify-content:space-between;gap:15px;align-items:baseline;flex-wrap:wrap;margin-bottom:14px}
-.trajectory-heading h2{margin:0;color:var(--accent)}
-.trajectory-hint{color:var(--muted);font:12px ui-monospace,monospace}
-.trajectory-shell{border:1px solid var(--line);border-radius:9px;background:var(--surface);padding:clamp(12px,2vw,24px)}
-.trajectory-svg{width:100%;height:auto;display:block;overflow:visible}
-.trajectory-svg .grid-line{stroke:#293630;stroke-width:1;stroke-dasharray:4 6}
-.trajectory-svg .axis-text{fill:#9da9a4;font:12px ui-monospace,monospace}
-.trajectory-svg .axis-title{fill:#8fbfa3;font:12px ui-monospace,monospace}
-.trajectory-svg .route{fill:none;stroke:#6c9e82;stroke-width:2.5;stroke-dasharray:7 6}
-.trajectory-svg .stop{cursor:pointer;outline:none}
-.trajectory-svg .stop circle.outer{fill:#111820;stroke:#8fbfa3;stroke-width:2.5;transition:fill .2s,stroke-width .2s}
-.trajectory-svg .stop circle.inner{fill:#8fbfa3}
-.trajectory-svg .stop text{fill:#e9edea;font:12px ui-monospace,monospace;pointer-events:none}
-.trajectory-svg .stop:hover circle.outer,.trajectory-svg .stop.active circle.outer,.trajectory-svg .stop:focus circle.outer{fill:#274537;stroke-width:4}
-.trajectory-svg .stop:focus-visible{outline:none}
-.trajectory-panel{border-top:1px solid var(--line);padding-top:20px;margin-top:12px;min-height:125px}
-.trajectory-panel .eyebrow{font:12px ui-monospace,monospace;color:var(--accent);letter-spacing:.08em}
-.trajectory-panel h3{margin:9px 0 6px;font-size:21px;font-weight:550}
-.trajectory-panel p{margin:6px 0;color:var(--muted);font-size:15px;line-height:1.6}
-.publication-network{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:18px}
-.publication-node{display:block;border:1px solid #3a5547;background:#14231c;border-radius:7px;padding:14px 16px;color:var(--text)!important;text-decoration:none;font-size:14px;line-height:1.45}
-.publication-node:hover{border-color:var(--accent);color:var(--accent)!important}
-.publication-node small{display:block;color:var(--accent);font:11px ui-monospace,monospace;margin-bottom:7px}
-.trajectory-note{font-size:12px!important;margin:13px 0 0!important}
-@media(max-width:600px){.trajectory-svg .stop text{font-size:11px}.trajectory-svg .axis-text{font-size:11px}.trajectory-shell{padding:10px}.trajectory-intro{margin-bottom:32px}}
-</style>
-</head>
-<body>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>About | Sherlynette Pérez Castro</title><link rel="stylesheet" href="style.css"><style>
+.page.journey-page{max-width:1200px}.journey-intro{max-width:950px;margin:24px 0 40px!important;font-size:clamp(17px,2vw,22px)!important;line-height:1.7!important;color:var(--text)!important}.journey-head{display:flex;justify-content:space-between;gap:15px;align-items:baseline;flex-wrap:wrap;margin-bottom:14px}.journey-head h2{margin:0;color:var(--accent)}.journey-head span{font:12px ui-monospace,monospace;color:var(--muted)}.journey-card{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:clamp(12px,2.5vw,25px)}.journey-plot{width:100%;height:auto;display:block}.journey-plot .grid{stroke:#293630;stroke-dasharray:4 7}.journey-plot .tick{fill:#9da9a4;font:12px ui-monospace,monospace}.journey-plot .route{stroke:#679a7c;stroke-width:2.5;stroke-dasharray:6 6;fill:none}.journey-plot .point{cursor:pointer}.journey-plot .point .halo{fill:#111820;stroke:#8fbfa3;stroke-width:3}.journey-plot .point .core{fill:#8fbfa3}.journey-plot .point .name{fill:#e9edea;font:12px ui-monospace,monospace;pointer-events:none}.journey-plot .point.active .halo,.journey-plot .point:hover .halo,.journey-plot .point:focus .halo{fill:#244634;stroke-width:4}.journey-plot .sat-line{stroke:#8fbfa3;stroke-width:1.5;stroke-dasharray:3 4}.journey-plot .satellite{cursor:pointer;outline:none}.journey-plot .satellite circle{fill:#20362e;stroke:#8fbfa3;stroke-width:2}.journey-plot .satellite:hover circle,.journey-plot .satellite:focus circle{fill:#3d6b52}.journey-plot .satellite text{fill:#e9edea;font:12px ui-monospace,monospace;pointer-events:none}.journey-plot .satellite .sat-year{fill:#8fbfa3;font-size:10px}.journey-hint{font:12px ui-monospace,monospace;color:var(--muted);margin:10px 0 0}.journey-preview{display:none;gap:14px;align-items:center;margin-top:15px;border-top:1px solid var(--line);padding-top:15px}.journey-preview.visible{display:flex}.journey-preview img{width:115px;height:85px;object-fit:contain;background:#fff;border-radius:3px}.journey-preview a{color:var(--accent);font-size:14px}.journey-preview p{margin:0!important;font-size:13px!important}.journey-preview strong{font-size:14px}@media(max-width:650px){.journey-card{overflow-x:auto}.journey-plot{min-width:650px}.journey-head span{font-size:10px}}
+/* Homepage figure alignment: add this same rule to style.css to affect Home */
+</style></head><body>
 <header><a class="brand" href="index.html">Sherlynette Pérez Castro<small>MICROBIAL ECOLOGY · BIOGEOCHEMISTRY</small></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="cv.html">CV</a></nav></header>
-<main class="page trajectory-page">
-<div class="prompt">sherly@research:~/about $ <span class="cursor">_</span></div>
-<p class="trajectory-intro">Integrating experimental ecology, biogeochemistry, multi-omics, and quantitative and bioinformatic approaches to investigate ecosystem processes across natural and built environments.</p>
-<div class="trajectory-heading"><h2>RESEARCH TRAJECTORY</h2><span class="trajectory-hint">SELECT A NODE TO EXPLORE RESEARCH &amp; PUBLICATIONS</span></div>
-<div class="trajectory-shell">
-<svg id="career-plot" class="trajectory-svg" viewBox="0 0 940 420" role="img" aria-label="Interactive career trajectory: years on the horizontal axis and institutional latitude on the vertical axis"></svg>
-<div id="trajectory-details" class="trajectory-panel" aria-live="polite"></div>
-</div>
-<p class="trajectory-note">Locations reflect approximate campus latitude. USDA NRCS (Florida, with work in Wyoming) is included in the details but not plotted until specific locations are confirmed. Dates mark selected career milestones rather than continuous residence.</p>
-</main>
-<footer>© Sherlynette Pérez Castro · Built with GitHub Pages</footer>
+<main class="page journey-page"><div class="prompt">sherly@research:~/about $ <span class="cursor">_</span></div><p class="journey-intro">Integrating experimental ecology, biogeochemistry, multi-omics, and quantitative and bioinformatic approaches to investigate ecosystem processes across natural and built environments.</p><div class="journey-head"><h2>RESEARCH TRAJECTORY</h2><span>HOVER OR TAP A NODE TO EXPLORE</span></div><div class="journey-card"><svg id="journey" class="journey-plot" viewBox="0 0 1000 510" role="group" aria-label="Interactive research trajectory: year versus approximate institutional latitude"></svg><div id="preview" class="journey-preview" aria-live="polite"></div><p class="journey-hint">○ Institution · ◉ Research output · Select a satellite to open its paper or figure</p></div></main><footer>© Sherlynette Pérez Castro · Built with GitHub Pages</footer>
 <script>
-const stops = [
-  {id:'upr-rp',year:2006,lat:18.40,short:'UPR RP',name:'University of Puerto Rico, Río Piedras',date:'2006 · BA Environmental Sciences',place:'San Juan, Puerto Rico',theme:'Foundations in environmental science',papers:[],labelY:17},
-  {id:'upr-m',year:2010,lat:18.20,short:'UPR M',name:'University of Puerto Rico, Mayagüez',date:'2010 · MS Soil Sciences',place:'Mayagüez, Puerto Rico',theme:'Soil science and environmental processes',papers:[],labelY:-17},
-  {id:'sdsu',year:2018,lat:32.78,short:'SDSU–UC Davis',name:'San Diego State University / University of California, Davis',date:'2018 · PhD Ecology',place:'San Diego and Davis, California',theme:'Experimental soil microbial ecology and environmental change. This marker uses SDSU latitude; UC Davis is at approximately 38.5°N.',papers:[{year:2019,title:'Soil microbial responses to drought and exotic plants shift carbon metabolism',doi:'10.1038/s41396-019-0389-9'}],labelY:22},
-  {id:'mbl',year:2019,lat:41.53,short:'MBL',name:'Marine Biological Laboratory',date:'2018–2023 · Postdoctoral Scientist',place:'Woods Hole, Massachusetts',theme:'Deep-sea sediment microbiology, salt marsh sulfur cycling, and microbial genomics',papers:[{year:2021,title:'Degradation of biological macromolecules supports uncultured microbial populations in Guaymas Basin hydrothermal sediments',doi:'10.1038/s41396-021-01026-5'},{year:2023,title:'Diversity at single nucleotide to pangenome scales among sulfur cycling bacteria in salt marshes',doi:'10.1128/aem.00988-23'}],labelY:-19},
-  {id:'uga',year:2023,lat:33.95,short:'UGA',name:'University of Georgia · Thompson Lab',date:'2023–2025 · Postdoctoral Research Associate',place:'Athens, Georgia',theme:'Soil carbon dynamics, plant–microbe interactions, and biogeochemistry',papers:[{year:2026,title:'Nutrient stress reduces the extent but increases the intensity of root-driven destabilization of mineral-associated organic matter',doi:'10.1038/s43247-026-04008-7'},{year:2026,title:'Fluxes versus pools: Connecting temperature dependence and sensitivity of soil carbon dynamics across timescales',doi:'10.1029/2026JG009818'}],labelY:25},
-  {id:'unc',year:2025,lat:34.72,short:'UNC IMS',name:'UNC Institute of Marine Sciences · Noble Lab',date:'2025–present · Postdoctoral Research Associate',place:'Morehead City, North Carolina',theme:'Built-environment microbiology, microbial surveillance, and environmental sensing',papers:[],labelY:-19}
+// Coordinates are approximate campus latitudes. The USDA stop is not plotted until its office location is confirmed.
+const stops=[
+{id:'ms',year:2010,lat:18.2,label:'UPR MS',name:'UPR Mayagüez · MS Soil Sciences',sat:[{year:2010,label:'Mn nodules · Fig. 4',image:'mn-nodules-fig4.jpg',desc:'Manganese nodules from MS soil science research'}]},
+{id:'sdsu',year:2018,lat:32.78,label:'SDSU–UC Davis',name:'SDSU / UC Davis · PhD Ecology',sat:[{year:2019,label:'Drought + plants',doi:'10.1038/s41396-019-0389-9'}]},
+{id:'mbl',year:2019,lat:41.53,label:'MBL',name:'Marine Biological Laboratory',sat:[{year:2021,label:'Guaymas Basin',doi:'10.1038/s41396-021-01026-5'},{year:2023,label:'Salt marshes',doi:'10.1128/aem.00988-23'}]},
+{id:'uga',year:2023,lat:33.95,label:'UGA',name:'University of Georgia',sat:[{year:2026,label:'Root-driven MAOM',doi:'10.1038/s43247-026-04008-7'},{year:2026,label:'Fluxes vs pools',doi:'10.1029/2026JG009818'}]},
+{id:'unc',year:2025,lat:34.72,label:'UNC IMS',name:'UNC Institute of Marine Sciences',sat:[{year:2025,label:'Built environments',desc:'Microbial surveillance, bioaerosols and environmental sensing'}]}
 ];
-const extra={id:'usda',name:'USDA Natural Resources Conservation Service',date:'2010–2013 · Soil Scientist',place:'Florida; fieldwork in Wyoming',theme:'Applied soil science and natural resource conservation',papers:[]};
-const svg=document.querySelector('#career-plot');
-const panel=document.querySelector('#trajectory-details');
-const NS='http://www.w3.org/2000/svg';
-const el=(tag,attrs={},parent=svg)=>{const node=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>node.setAttribute(k,v));parent.appendChild(node);return node;};
-const x=year=>72+(year-2006)/(2026-2006)*800;
-const y=lat=>345-(lat-15)/(45-15)*290;
-for(let lat=15;lat<=45;lat+=5){el('line',{x1:72,y1:y(lat),x2:888,y2:y(lat),class:'grid-line'});const t=el('text',{x:12,y:y(lat)+4,class:'axis-text'});t.textContent=lat+'°N';}
-for(const year of [2006,2010,2014,2018,2022,2026]){const t=el('text',{x:x(year),y:383,'text-anchor':'middle',class:'axis-text'});t.textContent=year;}
-const axis=el('text',{x:480,y:411,'text-anchor':'middle',class:'axis-title'});axis.textContent='YEAR';
-const route=el('path',{d:stops.map((s,i)=>(i?'L':'M')+x(s.year)+' '+y(s.lat)).join(' '),class:'route'});
-function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function select(stop){
- document.querySelectorAll('.stop').forEach(n=>n.classList.toggle('active',n.dataset.id===stop.id));
- panel.innerHTML=`<div class="eyebrow">${safe(stop.date)}</div><h3>${safe(stop.name)}</h3><p>${safe(stop.place)}</p><p>${safe(stop.theme)}</p>${stop.papers.length?'<div class="publication-network">'+stop.papers.map(p=>`<a class="publication-node" target="_blank" rel="noopener" href="https://doi.org/${encodeURIComponent(p.doi)}"><small>↗ ${p.year} · PUBLICATION</small>${safe(p.title)}</a>`).join('')+'</div>':'<p>Explore research and training at this stop.</p>'}`;
-}
-for(const s of stops){
- const g=el('g',{class:'stop','data-id':s.id,role:'button',tabindex:'0','aria-label':s.name+'; select to view research'});
- el('circle',{cx:x(s.year),cy:y(s.lat),r:11,class:'outer'},g);
- el('circle',{cx:x(s.year),cy:y(s.lat),r:4,class:'inner'},g);
- const t=el('text',{x:x(s.year),y:y(s.lat)+s.labelY,'text-anchor':'middle'},g);t.textContent=s.short;
- g.addEventListener('click',()=>select(s));g.addEventListener('mouseenter',()=>select(s));
- g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(s);}});
-}
-select(stops[3]);
-// USDA details can be opened from a simple text control below the graph.
-const usdaButton=document.createElement('button');usdaButton.type='button';usdaButton.textContent='2010–2013 · USDA NRCS (FL / WY) ↗';
-usdaButton.style.cssText='background:transparent;border:1px solid #3a5547;border-radius:5px;color:#8fbfa3;padding:9px 12px;font:12px ui-monospace,monospace;cursor:pointer;margin-top:6px';
-usdaButton.addEventListener('click',()=>select(extra));svg.after(usdaButton);
-</script>
-</body>
-</html>
+const svg=document.getElementById('journey'),preview=document.getElementById('preview'),ns='http://www.w3.org/2000/svg';
+function el(tag,attrs={},parent=svg){const n=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));parent.append(n);return n}
+const X=yr=>90+(yr-2010)/16*790,Y=lat=>412-(lat-15)/30*320;
+for(let lat=15;lat<=45;lat+=5){el('line',{x1:90,y1:Y(lat),x2:945,y2:Y(lat),class:'grid'});el('text',{x:22,y:Y(lat)+4,class:'tick'}).textContent=lat+'°N'}
+for(let yr of [2010,2014,2018,2022,2026]){el('text',{x:X(yr),y:466,'text-anchor':'middle',class:'tick'}).textContent=yr}
+el('text',{x:510,y:495,'text-anchor':'middle',class:'tick'}).textContent='YEAR';
+el('path',{d:stops.map((s,i)=>(i?'L':'M')+X(s.year)+','+Y(s.lat)).join(' '),class:'route'});
+const satellites=el('g',{id:'satellites'});let selected=null;
+function show(s){selected=s.id;document.querySelectorAll('.point').forEach(p=>p.classList.toggle('active',p.dataset.id===s.id));satellites.replaceChildren();preview.classList.remove('visible');preview.replaceChildren();const px=X(s.year),py=Y(s.lat),n=s.sat.length;
+ s.sat.forEach((a,i)=>{const offsets=n===1?[[0,-91]]:n===2?[[-91,-76],[92,-76]]:[[0,-90]];let [dx,dy]=offsets[i];let sx=Math.max(100,Math.min(900,px+dx)),sy=Math.max(35,Math.min(440,py+dy));if(s.id==='mbl')sy=py+85;if(s.id==='unc')sx=px-110;
+ el('line',{x1:px,y1:py,x2:sx,y2:sy,class:'sat-line'},satellites);const g=el('g',{class:'satellite',role:'link',tabindex:'0','aria-label':a.label+(a.doi?' open publication':' view research output')},satellites);el('circle',{cx:sx,cy:sy,r:10},g);el('text',{x:sx,y:sy-20,'text-anchor':'middle',class:'sat-year'},g).textContent=a.year;el('text',{x:sx,y:sy+27,'text-anchor':'middle'},g).textContent=a.label;
+ const action=()=>{if(a.doi)window.open('https://doi.org/'+encodeURIComponent(a.doi),'_blank','noopener');else if(a.image){preview.classList.add('visible');const img=document.createElement('img');img.src=a.image;img.alt=a.desc;const info=document.createElement('div');const strong=document.createElement('strong');strong.textContent=a.label;const p=document.createElement('p');p.textContent=a.desc;const link=document.createElement('a');link.href=a.image;link.target='_blank';link.rel='noopener';link.textContent='Open full figure ↗';info.append(strong,p,link);preview.append(img,info)}else{preview.classList.add('visible');preview.textContent=a.desc||a.label}};
+ g.addEventListener('click',action);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();action()}});
+ });}
+for(const s of stops){const g=el('g',{class:'point','data-id':s.id,role:'button',tabindex:'0','aria-label':s.name+'; reveal associated research'});el('circle',{cx:X(s.year),cy:Y(s.lat),r:12,class:'halo'},g);el('circle',{cx:X(s.year),cy:Y(s.lat),r:4,class:'core'},g);const t=el('text',{x:X(s.year),y:Y(s.lat)+(s.id==='sdsu'?28:-20),'text-anchor':'middle',class:'name'},g);t.textContent=s.label;g.addEventListener('mouseenter',()=>show(s));g.addEventListener('click',()=>show(s));g.addEventListener('focus',()=>show(s));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(s)}})}
+</script></body></html>
