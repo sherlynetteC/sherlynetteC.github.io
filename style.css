@@ -11,20 +11,31 @@
   margin: 22px 0;
   border-radius: 6px;
 }
-/* Compact publication figures */
-.post img,
-.post-image,
-.post figure img {
-  width: 100% !important;
-  max-width: 380px !important;
-  height: auto !important;
-  object-fit: contain;
-  display: block;
-  margin: 20px 0;
+/* Compact publication figure previews */
+.post figure {
+  margin: 20px 0 28px;
+  width: 100%;
+  max-width: 340px;
 }
-/* Hide empty featured figure placeholder */
-.featured-figure,
-.featured-panel,
-.figure-placeholder {
+
+.post figure img,
+.post img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 340px !important;
+  height: auto !important;
+  margin: 0 !important;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.post figcaption {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+/* Hide the unused featured figure section */
+.featured {
   display: none !important;
 }
