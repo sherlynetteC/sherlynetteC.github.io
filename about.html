@@ -4,7 +4,7 @@
 </style></head><body>
 <header><a class="brand" href="index.html">Sherlynette Pérez Castro<small>MICROBIAL ECOLOGY · BIOGEOCHEMISTRY</small></a><nav><a href="index.html">Home</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="PérezCastro_CV_2026.pdf" target="_blank" rel="noopener">CV ↗</a></nav></header>
 <main class="page journey-page"><div class="prompt">sherly@research:~/about $ <span class="cursor">_</span></div><p class="journey-intro">Integrating experimental ecology, biogeochemistry, multi-omics, and quantitative and bioinformatic approaches to investigate ecosystem processes across natural and built environments.</p>
-<div class="journey-card"><span class="empty-note" id="empty-note">SELECT AN INSTITUTION TO EXPLORE ↗</span><svg id="journey" class="journey-plot" viewBox="0 0 1120 640" role="group" aria-label="Interactive research trajectory, year versus latitude; select an institution to expand publication satellites"></svg></div></main><footer>© Sherlynette Pérez Castro · Built with GitHub Pages</footer>
+<div class="journey-card"><span class="empty-note" id="empty-note">SELECT AN INSTITUTION TO EXPLORE ↗</span><svg id="journey" class="journey-plot" viewBox="0 0 1120 1050" role="group" aria-label="Interactive research trajectory, year versus latitude; select an institution to expand publication satellites"></svg></div></main><footer>© Sherlynette Pérez Castro · Built with GitHub Pages</footer>
 <script>
 // Each institution has its own research spider. All links are relative to the site root or DOI URLs.
 const stops=[
@@ -25,7 +25,10 @@ el('path',{d:stops.map((s,i)=>(i?'L':'M')+X(s.year)+','+Y(s.lat)).join(' '),clas
 const satellites=el('g',{id:'satellites'});let active=null;
 function show(s){active=s.id;note.style.display='none';document.querySelectorAll('.point').forEach(p=>p.classList.toggle('active',p.dataset.id===s.id));satellites.replaceChildren();const x=X(s.year),y=Y(s.lat),items=s.outputs;
 // Citation satellites occupy a dedicated right-hand constellation, keeping text clear of the latitude route.
-const cardX=s.id==='unc'||s.id==='uga'?535:Math.max(360,Math.min(710,x+125));const cardW=345;const step=76;const top=Math.max(28,Math.min(600-items.length*step, y-items.length*step/2));
+const cardX=130;
+const cardW=345;
+const step=76;
+const top=650;
 items.forEach((o,i)=>{const cx=cardX,cy=top+i*step+25;el('line',{x1:x,y1:y,x2:cx,y2:cy,class:'spoke'},satellites);const g=el('g',{class:'satellite',role:'link',tabindex:'0','aria-label':o.label+'; open '+(o.doi?'publication':'figure')},satellites);
 el('rect',{x:cx-7,y:cy-20,width:cardW,height:58,rx:8,class:'citation-bg'},g);el('circle',{cx:cx,cy:cy+8,r:7,class:'dot'},g);
 el('text',{x:cx+16,y:cy+2,class:'citation'},g).textContent=o.label;
