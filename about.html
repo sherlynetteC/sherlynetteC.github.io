@@ -257,20 +257,26 @@ const stops = [
       }
     ]
   },
-  {
-    id:'nrcs',
-    year:2012,
-    lat:28.5,
-    label:'USDA NRCS',
-    outputs:[
-      {
-        type:'image',
-        label:'2013 WCA sampling campaign',
-        journal:'USDA NRCS · field research',
-        image:'nrcs.png'
-      }
-    ]
-  },
+  
+{
+  id:'nrcs',
+  year:2012,
+  lat:28.5,
+  label:'USDA NRCS',
+  outputs:[
+    {
+      type:'image',
+      label:'2013 WCA sampling campaign',
+      journal:'USDA NRCS · field research',
+      image:'nrcs.png'
+    },
+    {
+      label:'Lugo et al., 2009',
+      journal:'USDA-NRCS · Río Piedras, Puerto Rico',
+      url:'https://nasis.sc.egov.usda.gov/NasisReportsWebSite/limsreport.aspx?pedon_id=D09PR003001&report_name=Pedon_Site_Description_usepedonid'
+    }
+  ]
+},
   {
     id:'sdsu',
     year:2017,
@@ -387,7 +393,7 @@ function show(s){
   for(const o of s.outputs){
     const a=document.createElement('a');
     a.className='output-item';
-    a.href=o.doi?'https://doi.org/'+o.doi:o.image;
+    a.href=o.url || (o.doi?'https://doi.org/'+o.doi:o.image);
     a.target='_blank';
     a.rel='noopener';
 
