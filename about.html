@@ -81,8 +81,8 @@ for(const year of [2010,2014,2018,2022,2026])el('text',{x:X(year),y:550,'text-an
 el('text',{x:565,y:590,'text-anchor':'middle',class:'axis-title'}).textContent='YEAR';
 el('path',{d:stops.map((s,i)=>(i?'L':'M')+X(s.year)+','+Y(s.lat)).join(' '),class:'route'});
 const spokes=el('g',{id:'spokes'});
-const cards=el('g',{id:'cards'});
 const nodes=el('g',{id:'nodes'});
+const cards=el('g',{id:'cards'});
 let active=null;
 function show(s){
   if(active===s.id)return;
