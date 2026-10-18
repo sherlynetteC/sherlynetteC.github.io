@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,131 +6,442 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About | Sherlynette Pérez Castro</title>
 <link rel="stylesheet" href="style.css">
+
 <style>
-.page.journey-page{max-width:1320px}
-.journey-intro{max-width:1050px;margin:25px 0 30px!important;font-size:clamp(17px,2vw,22px)!important;line-height:1.7!important;color:var(--text)!important}
-.journey-card{background:#111820;border:1px solid #293630;border-radius:10px;padding:16px;overflow:hidden}
-.journey-plot{
-  display:block;
-  width:100%;
-  height:auto;
-  max-height:440px;
-  margin:auto;
+.page.journey-page {
+  max-width: 1320px;
+  padding-top: 35px;
 }
-.journey-plot .grid{stroke:#293630;stroke-dasharray:4 8}
-.journey-plot .tick{fill:#9da9a4;font:13px ui-monospace,Menlo,Consolas,monospace}
-.journey-plot .route{stroke:#679a7c;stroke-width:2.5;stroke-dasharray:7 7;fill:none}
-.journey-plot .point{cursor:pointer;outline:none}
-.journey-plot .halo{fill:#111820;stroke:#8fbfa3;stroke-width:3}
-.journey-plot .core{fill:#8fbfa3}
-.journey-plot .name{fill:#e9edea;font:13px ui-monospace,Menlo,Consolas,monospace;pointer-events:none}
-.journey-plot .point:hover .halo,.journey-plot .point.active .halo,.journey-plot .point:focus .halo{fill:#244634;stroke-width:4}
-.journey-plot .spoke{stroke:#8fbfa3;stroke-width:1.7;stroke-dasharray:4 5;opacity:.8}
-.journey-plot .satellite{cursor:pointer;outline:none}
-.journey-plot .satellite .citation-bg{fill:#214638;stroke:#8fbfa3;stroke-width:1.4}
-.journey-plot .satellite:hover .citation-bg,.journey-plot .satellite:focus .citation-bg{fill:#2c5c48;stroke:#b5e0c3;stroke-width:2}
-.journey-plot .satellite .dot{fill:#8fbfa3}
-.journey-plot .satellite .citation{fill:#fff;font:13px ui-monospace,Menlo,Consolas,monospace}
-.journey-plot .satellite .journal{fill:#c3e4d0;font:11px ui-monospace,Menlo,Consolas,monospace}
-.journey-plot .axis-title{fill:#8fbfa3;font:12px ui-monospace,Menlo,Consolas,monospace}
-.journey-hint{margin:0 0 8px;color:#9da9a4;font:12px ui-monospace,Menlo,Consolas,monospace}
-@media(max-width:700px){.journey-card{overflow-x:auto}.journey-plot{min-width:900px}}
+
+.journey-intro {
+  max-width: 1050px;
+  margin: 16px 0 24px !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: var(--text) !important;
+}
+
+.journey-card {
+  background: #111820;
+  border: 1px solid #293630;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.journey-hint {
+  margin: 0 0 12px;
+  color: #9da9a4;
+  font: 12px ui-monospace, Menlo, Consolas, monospace;
+}
+
+.journey-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(310px, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.journey-plot {
+  width: 100%;
+  height: 410px;
+  display: block;
+}
+
+.journey-plot .grid {
+  stroke: #293630;
+  stroke-dasharray: 4 8;
+}
+
+.journey-plot .tick {
+  fill: #9da9a4;
+  font: 14px ui-monospace, Menlo, Consolas, monospace;
+}
+
+.journey-plot .route {
+  stroke: #679a7c;
+  stroke-width: 3;
+  stroke-dasharray: 7 7;
+  fill: none;
+}
+
+.journey-plot .point {
+  cursor: pointer;
+  outline: none;
+}
+
+.journey-plot .halo {
+  fill: #111820;
+  stroke: #8fbfa3;
+  stroke-width: 3;
+}
+
+.journey-plot .core {
+  fill: #8fbfa3;
+}
+
+.journey-plot .name {
+  fill: #e9edea;
+  font: 13px ui-monospace, Menlo, Consolas, monospace;
+  pointer-events: none;
+}
+
+.journey-plot .point.active .halo,
+.journey-plot .point:hover .halo,
+.journey-plot .point:focus .halo {
+  fill: #244634;
+  stroke-width: 5;
+}
+
+.journey-plot .spoke {
+  stroke: #8fbfa3;
+  stroke-width: 1.8;
+  stroke-dasharray: 4 5;
+  fill: none;
+}
+
+.journey-plot .axis-title {
+  fill: #8fbfa3;
+  font: 13px ui-monospace, Menlo, Consolas, monospace;
+}
+
+.output-panel {
+  background: #18372c;
+  border: 1px solid #659a7c;
+  border-radius: 10px;
+  padding: 16px;
+  min-height: 410px;
+  position: relative;
+}
+
+.output-title {
+  margin: 0 0 14px;
+  color: #b5e0c3;
+  font: 13px ui-monospace, Menlo, Consolas, monospace;
+  letter-spacing: .06em;
+}
+
+.output-empty {
+  color: #b0c6b8;
+  font: 13px/1.7 ui-monospace, Menlo, Consolas, monospace;
+}
+
+.output-list {
+  display: grid;
+  gap: 10px;
+}
+
+.output-item {
+  display: block;
+  background: #214638;
+  border: 1px solid #659a7c;
+  border-radius: 8px;
+  padding: 12px;
+  color: #fff;
+  text-decoration: none;
+  font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace;
+}
+
+.output-item:hover,
+.output-item:focus {
+  background: #2c5c48;
+  border-color: #b5e0c3;
+}
+
+.output-item strong {
+  display: block;
+  font-weight: 500;
+}
+
+.output-item small {
+  display: block;
+  margin-top: 5px;
+  color: #c3e4d0;
+  font-size: 11px;
+}
+
+.output-item img {
+  display: block;
+  width: 100%;
+  max-height: 195px;
+  object-fit: contain;
+  margin-bottom: 12px;
+  border-radius: 5px;
+}
+
+@media(max-width: 850px) {
+  .journey-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-plot {
+    height: auto;
+  }
+
+  .output-panel {
+    min-height: 0;
+  }
+}
 </style>
 </head>
+
 <body>
 <header>
-<a class="brand" href="index.html">Sherlynette Pérez Castro<small>MICROBIAL ECOLOGY · BIOGEOCHEMISTRY</small></a>
-<nav><a href="index.html">Home</a><a href="about.html">About</a><a href="resources.html">Resources</a><a href="PérezCastro_CV_2026.pdf" target="_blank" rel="noopener">CV ↗</a></nav>
+  <a class="brand" href="index.html">
+    Sherlynette Pérez Castro
+    <small>MICROBIAL ECOLOGY · BIOGEOCHEMISTRY</small>
+  </a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="resources.html">Resources</a>
+    <a href="PérezCastro_CV_2026.pdf" target="_blank" rel="noopener">CV ↗</a>
+  </nav>
 </header>
+
 <main class="page journey-page">
-<div class="prompt">sherly@research:~/about $ <span class="cursor">_</span></div>
-<p class="journey-intro">Integrating experimental ecology, biogeochemistry, multi-omics, and quantitative and bioinformatic approaches to investigate ecosystem processes across natural and built environments.</p>
-<div class="journey-card">
-<p class="journey-hint">SELECT AN INSTITUTION TO EXPLORE ↗</p>
-<svg id="journey" class="journey-plot" viewBox="0 0 1120 640" role="group" aria-label="Interactive research trajectory showing research institutions by year and latitude. Select an institution to explore research outputs."></svg>
-</div>
+  <div class="prompt">
+    sherly@research:~/about $ <span class="cursor">_</span>
+  </div>
+
+  <p class="journey-intro">
+    Integrating experimental ecology, biogeochemistry, multi-omics,
+    and quantitative and bioinformatic approaches to investigate
+    ecosystem processes across natural and built environments.
+  </p>
+
+  <div class="journey-card">
+    <p class="journey-hint">SELECT AN INSTITUTION TO EXPLORE ↗</p>
+
+    <div class="journey-layout">
+      <svg
+        id="journey"
+        class="journey-plot"
+        viewBox="0 0 760 420"
+        role="group"
+        aria-label="Interactive research trajectory by year and latitude">
+      </svg>
+
+      <section class="output-panel" aria-live="polite">
+        <h2 class="output-title" id="output-title">
+          RESEARCH OUTPUTS
+        </h2>
+        <div class="output-list" id="output-list">
+          <p class="output-empty">
+            Select an institution on the graph to explore
+            publications, research figures, and photographs.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
 </main>
-<footer>© Sherlynette Pérez Castro · Built with GitHub Pages</footer>
+
+<footer>
+  © Sherlynette Pérez Castro · Built with GitHub Pages
+</footer>
+
 <script>
 const stops = [
-  {id:'ms',year:2010,lat:18.2,label:'UPR · MS',outputs:[{type:'image',label:'Occurrence and Characterization of Mn Nodules',journal:'Coloso Valley Agricultural Reserve · MS research',image:'mn-nodules-fig4.jpg'}]},
-  {id:'nrcs',year:2012,lat:28.5,label:'USDA NRCS',outputs:[{type:'image',label:'2013 WCA sampling campaign',journal:'USDA NRCS · field research',image:'nrcs.png'}]},
-  {id:'sdsu',year:2017,lat:32.78,label:'SDSU–UC Davis',outputs:[
-    {label:'Pérez Castro et al., 2019',journal:'The ISME Journal',doi:'10.1038/s41396-019-0389-9'},
-    {label:'Puritty et al., 2019',journal:'Plant Ecology',doi:'10.1007/s11258-019-00912-5'},
-    {label:'Pérez Castro et al., 2019',journal:'Geoderma',doi:'10.1016/j.geoderma.2019.114111'},
-    {label:'Lipson et al., 2021',journal:'Applied and Environmental Microbiology',doi:'10.1128/AEM.01643-20'}]},
-  {id:'mbl',year:2020,lat:41.53,label:'MBL',outputs:[
-    {label:'Pérez Castro et al., 2021',journal:'The ISME Journal',doi:'10.1038/s41396-021-01026-5'},
-    {label:'Pérez Castro et al., 2023',journal:'Applied and Environmental Microbiology',doi:'10.1128/aem.00988-23'},
-    {label:'Bölscher et al., 2025',journal:'Nature Communications',doi:'10.1038/s41467-025-61273-4'},
-    {label:'García Arredondo et al., 2026',journal:'Communications Earth & Environment',doi:'10.1038/s43247-026-04008-7'}]},
-  {id:'uga',year:2024,lat:33.95,label:'UGA',outputs:[
-    {label:'Barcellos et al., 2025',journal:'Environmental Science & Technology',doi:'10.1021/acs.est.4c12329'},
-    {label:'Calabrese et al., 2026',journal:'JGR: Biogeosciences',doi:'10.1029/2026JG009818'},
-    {label:'Tulip et al., 2026',journal:'EGUsphere · preprint',doi:'10.5194/egusphere-2026-2111'}]},
-  {id:'unc',year:2025.5,lat:34.72,label:'UNC IMS',outputs:[
-    {label:'Pérez Castro et al., 2026',journal:'BMC Microbiology',doi:'10.1186/s12866-026-05609-0'}]}
+  {
+    id:'ms',
+    year:2010,
+    lat:18.2,
+    label:'UPR · MS',
+    outputs:[
+      {
+        type:'image',
+        label:'Occurrence and Characterization of Mn Nodules',
+        journal:'Coloso Valley Agricultural Reserve · MS research',
+        image:'mn-nodules-fig4.jpg'
+      }
+    ]
+  },
+  {
+    id:'nrcs',
+    year:2012,
+    lat:28.5,
+    label:'USDA NRCS',
+    outputs:[
+      {
+        type:'image',
+        label:'2013 WCA sampling campaign',
+        journal:'USDA NRCS · field research',
+        image:'nrcs.png'
+      }
+    ]
+  },
+  {
+    id:'sdsu',
+    year:2017,
+    lat:32.78,
+    label:'SDSU–UC Davis',
+    outputs:[
+      {label:'Pérez Castro et al., 2019',journal:'The ISME Journal',doi:'10.1038/s41396-019-0389-9'},
+      {label:'Puritty et al., 2019',journal:'Plant Ecology',doi:'10.1007/s11258-019-00912-5'},
+      {label:'Pérez Castro et al., 2019',journal:'Geoderma',doi:'10.1016/j.geoderma.2019.114111'},
+      {label:'Lipson et al., 2021',journal:'Applied and Environmental Microbiology',doi:'10.1128/AEM.01643-20'}
+    ]
+  },
+  {
+    id:'mbl',
+    year:2020,
+    lat:41.53,
+    label:'MBL',
+    outputs:[
+      {label:'Pérez Castro et al., 2021',journal:'The ISME Journal',doi:'10.1038/s41396-021-01026-5'},
+      {label:'Pérez Castro et al., 2023',journal:'Applied and Environmental Microbiology',doi:'10.1128/aem.00988-23'},
+      {label:'Bölscher et al., 2025',journal:'Nature Communications',doi:'10.1038/s41467-025-61273-4'},
+      {label:'García Arredondo et al., 2026',journal:'Communications Earth & Environment',doi:'10.1038/s43247-026-04008-7'}
+    ]
+  },
+  {
+    id:'uga',
+    year:2024,
+    lat:33.95,
+    label:'UGA',
+    outputs:[
+      {label:'Barcellos et al., 2025',journal:'Environmental Science & Technology',doi:'10.1021/acs.est.4c12329'},
+      {label:'Calabrese et al., 2026',journal:'JGR: Biogeosciences',doi:'10.1029/2026JG009818'},
+      {label:'Tulip et al., 2026',journal:'EGUsphere · preprint',doi:'10.5194/egusphere-2026-2111'}
+    ]
+  },
+  {
+    id:'unc',
+    year:2025.5,
+    lat:34.72,
+    label:'UNC IMS',
+    outputs:[
+      {label:'Pérez Castro et al., 2026',journal:'BMC Microbiology',doi:'10.1186/s12866-026-05609-0'}
+    ]
+  }
 ];
+
 const svg=document.getElementById('journey');
 const ns='http://www.w3.org/2000/svg';
-const el=(tag,attrs={},parent=svg)=>{const n=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);parent.append(n);return n};
-const X=year=>95+(year-2010)/16*930;
-const Y=lat=>485-(lat-15)/30*390;
-for(let lat=15;lat<=45;lat+=5){el('line',{x1:95,y1:Y(lat),x2:1055,y2:Y(lat),class:'grid'});el('text',{x:20,y:Y(lat)+5,class:'tick'}).textContent=lat+'°N'}
-for(const year of [2010,2014,2018,2022,2026])el('text',{x:X(year),y:550,'text-anchor':'middle',class:'tick'}).textContent=year;
-el('text',{x:565,y:590,'text-anchor':'middle',class:'axis-title'}).textContent='YEAR';
-el('path',{d:stops.map((s,i)=>(i?'L':'M')+X(s.year)+','+Y(s.lat)).join(' '),class:'route'});
+const outputTitle=document.getElementById('output-title');
+const outputList=document.getElementById('output-list');
+
+function el(tag,attrs={},parent=svg){
+  const node=document.createElementNS(ns,tag);
+  for(const [key,value] of Object.entries(attrs)){
+    node.setAttribute(key,value);
+  }
+  parent.append(node);
+  return node;
+}
+
+const X=year=>85+(year-2010)/16*610;
+const Y=lat=>330-(lat-15)/30*260;
+
+for(let lat=15;lat<=45;lat+=5){
+  el('line',{
+    x1:85,y1:Y(lat),x2:705,y2:Y(lat),
+    class:'grid'
+  });
+  el('text',{
+    x:15,y:Y(lat)+5,class:'tick'
+  }).textContent=lat+'°N';
+}
+
+for(const year of [2010,2014,2018,2022,2026]){
+  el('text',{
+    x:X(year),y:373,
+    'text-anchor':'middle',class:'tick'
+  }).textContent=year;
+}
+
+el('text',{
+  x:390,y:410,
+  'text-anchor':'middle',class:'axis-title'
+}).textContent='YEAR';
+
+el('path',{
+  d:stops.map((s,i)=>
+    (i?'L':'M')+X(s.year)+','+Y(s.lat)
+  ).join(' '),
+  class:'route'
+});
+
 const spokes=el('g',{id:'spokes'});
 const nodes=el('g',{id:'nodes'});
-const cards=el('g',{id:'cards'});
-let active=null;
+
 function show(s){
-  if(active===s.id)return;
-  active=s.id;
-  document.querySelectorAll('.point').forEach(p=>p.classList.toggle('active',p.dataset.id===s.id));
-  spokes.replaceChildren();cards.replaceChildren();
-  const x=X(s.year),y=Y(s.lat),items=s.outputs;
-  const isPhoto=items[0]?.type==='image';
-  const cardW=isPhoto?350:355;
-  const cardH=isPhoto?235:56;
-  const gap=10;
-  const total=items.length*cardH+(items.length-1)*gap;
-  const top=Math.max(22,Math.min(510-total,y-total/2));
-  // The cards are placed to the right of the selected point where possible,
-  // but never beyond the SVG edge. A solid green fill hides lines behind text.
-  const left=Math.min(1120-cardW-20,Math.max(325,x+55));
-  items.forEach((o,i)=>{
-    const bx=left,by=top+i*(cardH+gap),cy=by+cardH/2;
-    el('line',{x1:x,y1:y,x2:bx,y2:cy,class:'spoke'},spokes);
-    const g=el('g',{class:'satellite',role:'link',tabindex:'0','aria-label':o.label+'; open '+(o.doi?'publication':'photograph')},cards);
-    el('rect',{x:bx,y:by,width:cardW,height:cardH,rx:8,class:'citation-bg'},g);
-    if(isPhoto){
-      const clipId='clip-'+s.id+'-'+i;
-      const defs=el('defs',{},g),clip=el('clipPath',{id:clipId},defs);
-      el('rect',{x:bx+10,y:by+10,width:cardW-20,height:155,rx:5},clip);
-      el('image',{href:o.image,x:bx+10,y:by+10,width:cardW-20,height:155,preserveAspectRatio:'xMidYMid meet','clip-path':'url(#'+clipId+')'},g);
-      el('text',{x:bx+14,y:by+188,class:'citation'},g).textContent=o.label;
-      el('text',{x:bx+14,y:by+211,class:'journal'},g).textContent=o.journal;
-    }else{
-      el('circle',{cx:bx+15,cy:by+28,r:5,class:'dot'},g);
-      el('text',{x:bx+30,y:by+23,class:'citation'},g).textContent=o.label+' ↗';
-      el('text',{x:bx+30,y:by+42,class:'journal'},g).textContent=o.journal;
-    }
-    const open=()=>window.open(o.doi?'https://doi.org/'+o.doi:o.image,'_blank','noopener');
-    g.addEventListener('click',open);
-    g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});
+  document.querySelectorAll('.point').forEach(p=>{
+    p.classList.toggle('active',p.dataset.id===s.id);
   });
+
+  spokes.replaceChildren();
+
+  // Short spider spokes connect the selected node
+  // to the direction of the research-output panel.
+  const x=X(s.year),y=Y(s.lat);
+  el('path',{
+    d:`M${x},${y} L${Math.min(x+35,730)},${y}`,
+    class:'spoke'
+  },spokes);
+
+  outputTitle.textContent=s.label+' / RESEARCH OUTPUTS';
+  outputList.replaceChildren();
+
+  for(const o of s.outputs){
+    const a=document.createElement('a');
+    a.className='output-item';
+    a.href=o.doi?'https://doi.org/'+o.doi:o.image;
+    a.target='_blank';
+    a.rel='noopener';
+
+    if(o.type==='image'){
+      const img=document.createElement('img');
+      img.src=o.image;
+      img.alt=o.label;
+      a.append(img);
+    }
+
+    const title=document.createElement('strong');
+    title.textContent=o.label+' ↗';
+
+    const journal=document.createElement('small');
+    journal.textContent=o.journal;
+
+    a.append(title,journal);
+    outputList.append(a);
+  }
 }
+
 for(const s of stops){
-  const g=el('g',{class:'point','data-id':s.id,role:'button',tabindex:'0','aria-label':s.label+'; show research outputs'},nodes);
-  el('circle',{cx:X(s.year),cy:Y(s.lat),r:13,class:'halo'},g);
-  el('circle',{cx:X(s.year),cy:Y(s.lat),r:4,class:'core'},g);
-  el('text',{x:X(s.year),y:Y(s.lat)-23,'text-anchor':'middle',class:'name'},g).textContent=s.label;
+  const g=el('g',{
+    class:'point',
+    'data-id':s.id,
+    role:'button',
+    tabindex:'0',
+    'aria-label':s.label+'; show research outputs'
+  },nodes);
+
+  el('circle',{
+    cx:X(s.year),cy:Y(s.lat),r:13,class:'halo'
+  },g);
+
+  el('circle',{
+    cx:X(s.year),cy:Y(s.lat),r:4,class:'core'
+  },g);
+
+  el('text',{
+    x:X(s.year),
+    y:Y(s.lat)-22,
+    'text-anchor':'middle',
+    class:'name'
+  },g).textContent=s.label;
+
   g.addEventListener('mouseenter',()=>show(s));
   g.addEventListener('focus',()=>show(s));
   g.addEventListener('click',()=>show(s));
-  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(s)}});
+  g.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      show(s);
+    }
+  });
 }
 </script>
 </body>
