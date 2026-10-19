@@ -34,3 +34,24 @@
   margin: 12px auto 0 !important;
   text-align: left !important;
 }
+
+
+.research-log-heading {
+  margin: 32px 0 24px;
+  padding-top: 22px;
+  border-top: 1px solid #31443b;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: #e0e8e3;
+}
+
+.research-log-heading .prompt {
+  color: #8dc6aa;
+  margin-right: 8px;
+}
+
+.research-log-heading .cursor {
+  color: #8dc6aa;
+}
+
