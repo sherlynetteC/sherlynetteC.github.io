@@ -99,6 +99,13 @@ const resources = [
 
   // VISUALIZATION
   {
+    name: 'Google Scholar Word Cloud',
+    category: 'visualization',
+    description: 'Reproducible R workflow connecting existing tools to generate customizable publication word clouds using only a Google Scholar ID',
+    url: 'https://github.com/sherlynetteC/google-scholar-wordcloud',
+    symbol: 'WC'
+  },
+  {
     name: 'R Plot Symbols',
     category: 'visualization',
     description: 'Base R plotting symbols and point types',
