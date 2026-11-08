@@ -1,4 +1,13 @@
 
+const researchProjects = [
+  {
+    year: 2026,
+    title: 'Google Scholar Word Cloud | R',
+    description: 'Inspired by the original online Google Scholar Word Cloud Generator. Recreated in R using scholar, tidytext, and wordcloud2. Just add your Google Scholar ID!',
+    image: 'https://raw.githubusercontent.com/sherlynetteC/google-scholar-wordcloud/main/wordcloud_final.png',
+    url: 'https://github.com/sherlynetteC/google-scholar-wordcloud'
+  }
+];
 const publications = [
   {
     year: 2026,
@@ -58,7 +67,32 @@ const escapeHTML = s =>
 
 const posts = document.querySelector('#posts');
 const recent = document.querySelector('#recent');
+const projectHTML = researchProjects.map(p => `
+  <article class="post" id="research-wordcloud">
+    <div class="meta">${p.year} · R PROGRAMMING · DATA VISUALIZATION</div>
 
+    <h3>
+      <a href="${p.url}" target="_blank" rel="noopener">
+        ${escapeHTML(p.title)}
+      </a>
+    </h3>
+
+    <figure>
+      <a class="figure-link" href="${p.url}"
+         target="_blank" rel="noopener">
+        <img src="${escapeHTML(p.image)}"
+             alt="Google Scholar research word cloud"
+             loading="lazy">
+      </a>
+    </figure>
+
+    <p>${escapeHTML(p.description)}</p>
+
+    <a class="doi" href="${p.url}" target="_blank" rel="noopener">
+      View R code on GitHub ↗
+    </a>
+  </article>
+`).join('');
 if (posts) {
   posts.innerHTML = publications.map((p, i) => {
     const url = `https://doi.org/${encodeURIComponent(p.doi)}`;
@@ -99,7 +133,7 @@ if (posts) {
         </a>
       </article>
     `;
-  }).join('');
+  }).join('') + projectHTML;
 }
 
 if (recent) {
