@@ -8,6 +8,7 @@ const researchProjects = [
     url: 'https://github.com/sherlynetteC/google-scholar-wordcloud'
   }
 ];
+
 const publications = [
   {
     year: 2026,
@@ -67,9 +68,13 @@ const escapeHTML = s =>
 
 const posts = document.querySelector('#posts');
 const recent = document.querySelector('#recent');
-const projectHTML = researchProjects.map(p => `
-  <article class="post" id="research-wordcloud">
-    <div class="meta">${p.year} · R PROGRAMMING · DATA VISUALIZATION</div>
+
+// RESEARCH PROJECTS
+const projectHTML = researchProjects.map((p, i) => `
+  <article class="post" id="research-project-${i + 1}">
+    <div class="meta">
+      ${p.year} · R PROGRAMMING · DATA VISUALIZATION
+    </div>
 
     <h3>
       <a href="${p.url}" target="_blank" rel="noopener">
@@ -88,59 +93,76 @@ const projectHTML = researchProjects.map(p => `
 
     <p>${escapeHTML(p.description)}</p>
 
-    <a class="doi" href="${p.url}" target="_blank" rel="noopener">
+    <a class="doi" href="${p.url}"
+       target="_blank" rel="noopener">
       View R code on GitHub ↗
     </a>
   </article>
 `).join('');
-if (posts) {
-  posts.innerHTML = publications.map((p, i) => {
-    const url = `https://doi.org/${encodeURIComponent(p.doi)}`;
 
-    return `
-      <article class="post" id="post-${i + 1}">
-        <div class="meta">
-          ${p.year} · ${escapeHTML(p.journal)}
-        </div>
+// PUBLICATIONS
+const publicationHTML = publications.map((p, i) => {
+  const url = `https://doi.org/${encodeURIComponent(p.doi)}`;
 
-        <h3>
-          <a href="${url}" target="_blank" rel="noopener">
-            ${escapeHTML(p.title)}
-          </a>
-        </h3>
+  return `
+    <article class="post" id="post-${i + 1}">
+      <div class="meta">
+        ${p.year} · ${escapeHTML(p.journal)}
+      </div>
 
-        ${p.image ? `
-          <figure>
-            <a class="figure-link" href="${url}"
-               target="_blank" rel="noopener"
-               aria-label="Read publication: ${escapeHTML(p.title)}">
-              <img src="${escapeHTML(p.image)}"
-                   alt="${escapeHTML(p.figure)} from ${escapeHTML(p.title)}"
-                   loading="lazy">
-            </a>
-
-            <figcaption>
-              <a href="${url}" target="_blank" rel="noopener">
-                <strong>${escapeHTML(p.figure)} of the published paper.</strong>
-                ${escapeHTML(p.caption)}
-              </a>
-            </figcaption>
-          </figure>
-        ` : ''}
-
-        <a class="doi" href="${url}" target="_blank" rel="noopener">
-          Read paper ↗
+      <h3>
+        <a href="${url}" target="_blank" rel="noopener">
+          ${escapeHTML(p.title)}
         </a>
-      </article>
-    `;
-  }).join('') + projectHTML;
+      </h3>
+
+      ${p.image ? `
+        <figure>
+          <a class="figure-link" href="${url}"
+             target="_blank" rel="noopener"
+             aria-label="Read publication: ${escapeHTML(p.title)}">
+            <img src="${escapeHTML(p.image)}"
+                 alt="${escapeHTML(p.figure)} from ${escapeHTML(p.title)}"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <a href="${url}" target="_blank" rel="noopener">
+              <strong>${escapeHTML(p.figure)} of the published paper.</strong>
+              ${escapeHTML(p.caption)}
+            </a>
+          </figcaption>
+        </figure>
+      ` : ''}
+
+      <a class="doi" href="${url}"
+         target="_blank" rel="noopener">
+        Read paper ↗
+      </a>
+    </article>
+  `;
+}).join('');
+
+// RESEARCH LOG: NEWEST FIRST
+if (posts) {
+  posts.innerHTML = projectHTML + publicationHTML;
 }
 
+// RECENT POSTS: NEWEST FIRST
 if (recent) {
-  recent.innerHTML = publications.map((p, i) => `
+  const projectRecentHTML = researchProjects.map((p, i) => `
+    <a class="recent-item" href="#research-project-${i + 1}">
+      <small>${p.year}</small>
+      ${escapeHTML(p.title)}
+    </a>
+  `).join('');
+
+  const publicationRecentHTML = publications.map((p, i) => `
     <a class="recent-item" href="#post-${i + 1}">
       <small>${p.year}</small>
       ${escapeHTML(p.title)}
     </a>
   `).join('');
+
+  recent.innerHTML = projectRecentHTML + publicationRecentHTML;
 }
